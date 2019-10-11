@@ -38,6 +38,8 @@ function Ex1() {
 
   function handleOnClearAllButtonClick() {
     localStorage.removeItem('ex1-map-data');
+    setMapData({ 0: { children: [] }});
+    setLatestId(1);
   }
 
   useEffect(() => {
