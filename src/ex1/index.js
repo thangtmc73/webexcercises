@@ -64,7 +64,7 @@ function Ex1() {
           parentId={newChildParentId}
         />
         <button onClick={handleOnAddButtonClick}>Thêm</button>
-        <button onAbort={handleOnClearAllButtonClick}>Xoá hết dữ liệu</button>
+        <button onClick={handleOnClearAllButtonClick}>Xoá hết dữ liệu</button>
       </div>
       <div>
         <Node mapData={mapData} id={0} />
