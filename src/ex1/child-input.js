@@ -6,13 +6,13 @@ function ChildInput({ id, onValueChangeText, value, onParentIdChangeText, parent
       <span>Latest ID: {id}</span>
       <input
         className="value-input"
-        placeholder="Giá trị"
+        placeholder="Giá trị (có thể bỏ trống)"
         onChange={onValueChangeText}
         value={value}
       />
       <input
         className="parent-input" 
-        placeholder="Con ai? (id)"
+        placeholder="Con ai - Id? (default = 0)"
         onChange={onParentIdChangeText}
         value={parentId}
       />
