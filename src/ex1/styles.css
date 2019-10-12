@@ -19,6 +19,10 @@
 .ex1 .child-input .parent-input {
   font-size: 16px;
 }
+.ex1 .node .name {
+  display: inline-block;
+  padding: 3px;
+}
 .ex1 .node .node-children-wrapper {
   padding-left: 20px;
 }
