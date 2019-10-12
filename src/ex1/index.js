@@ -42,6 +42,24 @@ function Ex1() {
     setLatestId(1);
   }
 
+  function updateNewParent(id, parentId) {
+    const dropNode = mapData[id];
+    const previousParentId = dropNode.parentId;
+    const previousParent= mapData[previousParentId];
+    const newParent = mapData[parentId];
+    previousParent.children = previousParent.children.filter(child => child !== id);
+    dropNode.parentId = parentId;
+    newParent.children.push(id);
+    const newMapData = {
+      ...mapData,
+      [parentId]: { ...newParent },
+      [previousParentId]: { ...previousParent },
+      [id]: { ...dropNode }
+    };
+    setMapData(newMapData);
+    window.localStorage.setItem('ex1-map-data', JSON.stringify(newMapData));
+  }
+
   useEffect(() => {
     const oldData = window.localStorage.getItem('ex1-map-data');
     if (!!oldData) {
@@ -57,7 +75,6 @@ function Ex1() {
       <div className="header">
         <ChildInput
           id={latestId}
-          key={latestId}
           onValueChangeText={handleOnNewChildValueChangeText}
           value={newChildValue}
           onParentIdChangeText={handleOnNewChildParentIdChangeText}
@@ -67,7 +84,11 @@ function Ex1() {
         <button onClick={handleOnClearAllButtonClick}>Xoá hết dữ liệu</button>
       </div>
       <div>
-        <Node mapData={mapData} id={0} />
+        <Node
+          mapData={mapData}
+          id={0}
+          updateNewParent={updateNewParent}
+        />
       </div>
     </div>
   );
