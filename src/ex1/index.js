@@ -19,7 +19,7 @@ function Ex1() {
   }
 
   function handleOnAddButtonClick() {
-    let parentId = !!mapData[newChildParentId] ? newChildParentId : 0;
+    let parentId = !!mapData[newChildParentId] ? Number(newChildParentId) : 0;
     let parentItem = mapData[parentId];
     parentItem.children.push(latestId);
     const newMapData = {
