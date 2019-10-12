@@ -26,7 +26,7 @@ function Ex1() {
       ...mapData,
       [parentId]: parentItem,
       [latestId]: {
-        value: newChildValue,
+        value: newChildValue || `dump${latestId}`,
         parentId,
         children: []
       }
