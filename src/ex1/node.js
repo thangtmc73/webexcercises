@@ -15,7 +15,9 @@ function Node(props) {
   function handleOnNodeDrop(ev) {
     ev.preventDefault();
     const idDrag = Number(ev.dataTransfer.getData("id-drag"));
-    updateNewParent(idDrag, id);
+    if (id !== idDrag) {
+      updateNewParent(idDrag, id);
+    }
   }
 
   const { value, children } = data;
