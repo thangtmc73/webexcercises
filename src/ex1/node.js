@@ -15,9 +15,21 @@ function Node(props) {
   function handleOnNodeDrop(ev) {
     ev.preventDefault();
     const idDrag = Number(ev.dataTransfer.getData("id-drag"));
-    if (id !== idDrag) {
+    if (id !== idDrag && !isChildOf(id, idDrag)) {
       updateNewParent(idDrag, id);
     }
+  }
+
+  function isChildOf(currentId, parentId) {
+    const parentNode = mapData[parentId];
+    if (parentNode.children.includes(currentId)) {
+      return true;
+    }
+    return (parentNode.children.map(
+        item => isChildOf(currentId, item)
+      ).filter(
+        item => item === true
+      ).length !== 0);
   }
 
   const { value, children } = data;
